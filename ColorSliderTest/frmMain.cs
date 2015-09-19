@@ -37,8 +37,8 @@ namespace ColorSliderTest
             //                   new Point(s.Width / 2, s.Height),
             //                   new Point(0, s.Height * 4 / 5)
             //               });
-            gp2.AddEllipse(30, 30, colorSliderCustomThumbTrackBar.Height - 5, colorSliderCustomThumbTrackBar.Height - 50);
-            colorSliderCustomThumbTrackBar.ThumbCustomShape = gp2;  
+            //gp2.AddEllipse(30, 30, colorSliderCustomThumbTrackBar.Height - 5, colorSliderCustomThumbTrackBar.Height - 50);
+            //colorSliderCustomThumbTrackBar.ThumbCustomShape = gp2;  
 
             GraphicsPath gp3 = new GraphicsPath();
             const int iNumRevs   = 7;
@@ -116,6 +116,23 @@ namespace ColorSliderTest
 
         private void frmMain_Paint(object sender, PaintEventArgs e)
         {            
+        }
+
+        private void colorSliderCustomThumbTrackBar_MouseEnter(object sender, EventArgs e)
+        {
+            colorSliderCustomThumbTrackBar.ThumbInnerColor = Color.White;
+            colorSliderCustomThumbTrackBar.ThumbOuterColor = Color.White;
+        }
+
+        private void colorSliderCustomThumbTrackBar_MouseLeave(object sender, EventArgs e)
+        {
+            colorSliderCustomThumbTrackBar.ThumbInnerColor = Color.Transparent;
+            colorSliderCustomThumbTrackBar.ThumbOuterColor = Color.Transparent;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            colorSliderCustomThumbTrackBar.Value = 30;
         }
     }
 }

@@ -41,6 +41,7 @@ namespace ColorSliderTest
             this.colorSliderCustomThumbText = new MB.Controls.ColorSlider();
             this.edEventLog = new System.Windows.Forms.TextBox();
             this.cbEventLog = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -210,24 +211,31 @@ namespace ColorSliderTest
             // 
             this.colorSliderCustomThumbTrackBar.BackColor = System.Drawing.Color.Transparent;
             this.colorSliderCustomThumbTrackBar.BarInnerColor = System.Drawing.Color.Silver;
-            this.colorSliderCustomThumbTrackBar.BarOuterColor = System.Drawing.Color.Gainsboro;
-            this.colorSliderCustomThumbTrackBar.BarPenColor = System.Drawing.Color.LimeGreen;
-            this.colorSliderCustomThumbTrackBar.BorderRoundRectSize = new System.Drawing.Size(2, 2);
-            this.colorSliderCustomThumbTrackBar.ElapsedOuterColor = System.Drawing.Color.LawnGreen;
+            this.colorSliderCustomThumbTrackBar.BarOuterColor = System.Drawing.Color.Transparent;
+            this.colorSliderCustomThumbTrackBar.BarPenColor = System.Drawing.Color.Transparent;
+            this.colorSliderCustomThumbTrackBar.BorderRoundRectSize = new System.Drawing.Size(1, 1);
+            this.colorSliderCustomThumbTrackBar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.colorSliderCustomThumbTrackBar.DrawFocusRectangle = false;
+            this.colorSliderCustomThumbTrackBar.ElapsedInnerColor = System.Drawing.Color.CornflowerBlue;
+            this.colorSliderCustomThumbTrackBar.ElapsedOuterColor = System.Drawing.Color.RoyalBlue;
             this.colorSliderCustomThumbTrackBar.LargeChange = ((uint)(5u));
             this.colorSliderCustomThumbTrackBar.Location = new System.Drawing.Point(6, 39);
+            this.colorSliderCustomThumbTrackBar.MouseEffects = false;
+            this.colorSliderCustomThumbTrackBar.MouseWheelBarPartitions = 100;
             this.colorSliderCustomThumbTrackBar.Name = "colorSliderCustomThumbTrackBar";
             this.colorSliderCustomThumbTrackBar.Size = new System.Drawing.Size(254, 15);
             this.colorSliderCustomThumbTrackBar.SmallChange = ((uint)(1u));
             this.colorSliderCustomThumbTrackBar.TabIndex = 1;
             this.colorSliderCustomThumbTrackBar.Text = "/";
-            this.colorSliderCustomThumbTrackBar.ThumbInnerColor = System.Drawing.Color.DarkGray;
-            this.colorSliderCustomThumbTrackBar.ThumbOuterColor = System.Drawing.Color.Gray;
-            this.colorSliderCustomThumbTrackBar.ThumbPenColor = System.Drawing.Color.DimGray;
-            this.colorSliderCustomThumbTrackBar.ThumbRoundRectSize = new System.Drawing.Size(8, 8);
-            this.colorSliderCustomThumbTrackBar.ThumbSize = 10;
+            this.colorSliderCustomThumbTrackBar.ThumbInnerColor = System.Drawing.Color.Transparent;
+            this.colorSliderCustomThumbTrackBar.ThumbOuterColor = System.Drawing.Color.Transparent;
+            this.colorSliderCustomThumbTrackBar.ThumbPenColor = System.Drawing.Color.Transparent;
+            this.colorSliderCustomThumbTrackBar.ThumbRoundRectSize = new System.Drawing.Size(10, 10);
+            this.colorSliderCustomThumbTrackBar.ThumbSize = 12;
             this.colorSliderCustomThumbTrackBar.ValueChanged += new System.EventHandler(this.SlidersValueChanged);
             this.colorSliderCustomThumbTrackBar.Scroll += new System.Windows.Forms.ScrollEventHandler(this.SlidersScroll);
+            this.colorSliderCustomThumbTrackBar.MouseEnter += new System.EventHandler(this.colorSliderCustomThumbTrackBar_MouseEnter);
+            this.colorSliderCustomThumbTrackBar.MouseLeave += new System.EventHandler(this.colorSliderCustomThumbTrackBar_MouseLeave);
             // 
             // colorSliderCustomThumbText
             // 
@@ -268,12 +276,23 @@ namespace ColorSliderTest
             this.cbEventLog.Text = "Event log (may degrade performance)";
             this.cbEventLog.UseVisualStyleBackColor = false;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(258, 291);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ColorSliderTest.Properties.Resources.Na_rybkach;
             this.ClientSize = new System.Drawing.Size(572, 318);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cbEventLog);
             this.Controls.Add(this.edEventLog);
             this.Controls.Add(this.groupBox2);
@@ -306,6 +325,7 @@ namespace ColorSliderTest
         private MB.Controls.ColorSlider colorSliderCustomThumbSinus;
         private System.Windows.Forms.TextBox edEventLog;
         private System.Windows.Forms.CheckBox cbEventLog;
+        private System.Windows.Forms.Button button1;
 
     }
 }
