@@ -248,6 +248,21 @@ namespace MB.Controls
             }
         }
 
+        private bool respondKeyPress = false;
+        /// <summary>
+        /// Gets or sets the mouse wheel bar partitions.
+        /// </summary>
+        /// <value>The mouse wheel bar partitions.</value>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">exception thrown when value isn't greather than zero</exception>
+        [Description("Set to whether respond key press")]
+        [Category("ColorSlider")]
+        [DefaultValue(false)]
+        public bool KeyPressRespond
+        {
+            get { return respondKeyPress; }
+            set { respondKeyPress = value; }
+        }
+
         private uint smallChange = 1;
         /// <summary>
         /// Gets or sets trackbar's small change. It affects how to behave when directional keys are pressed
@@ -329,6 +344,21 @@ namespace MB.Controls
                 mouseEffects = value;
                 Invalidate();
             }
+        }
+
+        private bool respondMouseWheel = false;
+        /// <summary>
+        /// Gets or sets the mouse wheel bar partitions.
+        /// </summary>
+        /// <value>The mouse wheel bar partitions.</value>
+        /// <exception cref="T:System.ArgumentOutOfRangeException">exception thrown when value isn't greather than zero</exception>
+        [Description("Set to whether respond mouse wheel")]
+        [Category("ColorSlider")]
+        [DefaultValue(false)]
+        public bool MouseWheelRespond
+        {
+            get { return respondMouseWheel; }
+            set {respondMouseWheel = value;}
         }
 
         private int mouseWheelBarPartitions = 10;
@@ -897,9 +927,12 @@ namespace MB.Controls
         /// <param name="e">A <see cref="T:System.Windows.Forms.MouseEventArgs"></see> that contains the event data.</param>
         protected override void OnMouseWheel(MouseEventArgs e)
         {
-            base.OnMouseWheel(e);
-            int v = e.Delta / 120 * (barMaximum - barMinimum) / mouseWheelBarPartitions;
-            SetProperValue(Value + v);
+            if (respondMouseWheel)
+            {
+                base.OnMouseWheel(e);
+                int v = e.Delta / 120 * (barMaximum - barMinimum) / mouseWheelBarPartitions;
+                SetProperValue(Value + v);
+            }
         }
 
         /// <summary>
@@ -928,38 +961,41 @@ namespace MB.Controls
         /// <param name="e">A <see cref="T:System.Windows.Forms.KeyEventArgs"></see> that contains the event data.</param>
         protected override void OnKeyUp(KeyEventArgs e)
         {
-            base.OnKeyUp(e);
-            switch (e.KeyCode)
+            if (respondKeyPress)
             {
-                case Keys.Down:
-                case Keys.Left:
-                    SetProperValue(Value - (int)smallChange);
-                    if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.SmallDecrement, Value));
-                    break;
-                case Keys.Up:
-                case Keys.Right:
-                    SetProperValue(Value + (int)smallChange);
-                    if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.SmallIncrement, Value));
-                    break;
-                case Keys.Home:
-                    Value = barMinimum;
-                    break;
-                case Keys.End:
-                    Value = barMaximum;
-                    break;
-                case Keys.PageDown:
-                    SetProperValue(Value - (int)largeChange);
-                    if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.LargeDecrement, Value));
-                    break;
-                case Keys.PageUp:
-                    SetProperValue(Value + (int)largeChange);
-                    if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.LargeIncrement, Value));
-                    break;
+                base.OnKeyUp(e);
+                switch (e.KeyCode)
+                {
+                    case Keys.Down:
+                    case Keys.Left:
+                        SetProperValue(Value - (int)smallChange);
+                        if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.SmallDecrement, Value));
+                        break;
+                    case Keys.Up:
+                    case Keys.Right:
+                        SetProperValue(Value + (int)smallChange);
+                        if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.SmallIncrement, Value));
+                        break;
+                    case Keys.Home:
+                        Value = barMinimum;
+                        break;
+                    case Keys.End:
+                        Value = barMaximum;
+                        break;
+                    case Keys.PageDown:
+                        SetProperValue(Value - (int)largeChange);
+                        if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.LargeDecrement, Value));
+                        break;
+                    case Keys.PageUp:
+                        SetProperValue(Value + (int)largeChange);
+                        if (Scroll != null) Scroll(this, new ScrollEventArgs(ScrollEventType.LargeIncrement, Value));
+                        break;
+                }
+                if (Scroll != null && Value == barMinimum) Scroll(this, new ScrollEventArgs(ScrollEventType.First, Value));
+                if (Scroll != null && Value == barMaximum) Scroll(this, new ScrollEventArgs(ScrollEventType.Last, Value));
+                Point pt = PointToClient(Cursor.Position);
+                OnMouseMove(new MouseEventArgs(MouseButtons.None, 0, pt.X, pt.Y, 0));
             }
-            if (Scroll != null && Value == barMinimum) Scroll(this, new ScrollEventArgs(ScrollEventType.First, Value));
-            if (Scroll != null && Value == barMaximum) Scroll(this, new ScrollEventArgs(ScrollEventType.Last, Value));
-            Point pt = PointToClient(Cursor.Position);
-            OnMouseMove(new MouseEventArgs(MouseButtons.None, 0, pt.X, pt.Y, 0));
         }
 
         /// <summary>
