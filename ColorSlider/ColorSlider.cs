@@ -921,6 +921,11 @@ namespace MB.Controls
             Invalidate();
         }
 
+        public void TriggerOnMouseWheel(MouseEventArgs e)
+        {
+          OnMouseWheel(e);
+        }
+
         /// <summary>
         /// Raises the <see cref="E:System.Windows.Forms.Control.MouseWheel"></see> event.
         /// </summary>
