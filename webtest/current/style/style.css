@@ -1,0 +1,70 @@
+﻿/* CSS Document */
+
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0; padding:0;}
+body{ margin:0px; font-size:12px; line-height:24px; color:#666; background:#eaeef2 url(img/mainBg.jpg) no-repeat top center;}
+ul,li,p{ padding:0px; margin:0px; list-style:none;}
+h1,h2,h3,h4,h5,h6{ margin:0px; padding:0px; text-decoration:none; font-size:16px; font-weight:lighter; font-family:"微软雅黑","Microsoft Yahei","黑体";}
+form{ margin:0px; padding:0px;}
+img{ border:0px;}
+input,button,select,textarea{cursor:pointer; border:none; vertical-align:middle;}
+input,text{ padding:0;}
+/* 链接 */
+a{text-decoration:none;color:#666;}
+a:hover{text-decoration:underline;color:#3e9ddf;}
+/* 浮动 */
+.fl{float:left;}
+.fr{float:right;}
+/* 清除 */
+.clear{ clear:both; margin:0px auto; padding:0px; width:0px; height:0px; line-height:0px; size:0px; OVERFLOW: hidden;}
+
+.tc{ text-align:center;}
+
+.mt10{ margin-top:10px;}
+
+
+.wid960{ width:960px; margin:0 auto;}
+
+.main{ background: #332f2d url(img/mainBg.jpg) no-repeat top center;}
+
+.shareText{ font-size:18px; color:#ffffff;text-align:center;font-weight: bold}
+.shareBtn{ margin-top:20px;padding-left:350px;}
+
+/*header*/
+.header{ height:77px;}
+a.logo{ display:inline-block; margin-top:28px; margin-left:40px; float:left; width:156px; height:41px; background:url(img/logo.png) no-repeat;}
+a.bbsBtn{ display:inline-block; margin-top:12px; float:right; width:58px; height:58px; background:url(img/bbsBtn.png) no-repeat;}
+a.bbsBtn:hover{ background-position:0 -58px;}
+
+.mainTop{ margin-top:372px; width:400px; margin-left:auto; margin-right:auto;}
+a.downBtn{ display:block; margin-left:auto; margin-right:auto; width:216px; height:59px; background:url(img/downBtn.png) no-repeat;}
+a.downBtn:hover{ display:block; margin-left:auto; margin-right:auto; width:216px; height:59px; background:url(img/downBtnHover.png) no-repeat;}
+.mainTop p{ font-size:18px;text-align:center;  color:#ffffff;}
+
+
+/*whatjm*/
+.whatjm{  background:#35373b url(img/appShow.png) bottom; padding-bottom:650px;}
+.softWindow{ width:465px; margin-left:25px;}
+.softInfo{ margin-left:25px; width:390px; color:#f3f3f3}
+.softInfo h4{ line-height:60px; font-size:22px;}
+
+
+.functionCon{  font-family:"微软雅黑"; color:#666; font-size:15px;}
+.functionCon h3{ font-size:22px; color:#3c3d41; border-bottom:4px solid  #3c3d41;text-align:center; line-height:60px; text-align:center;}
+.functionCon ul{ padding-top:30px;}
+.functionCon li{ padding:0px 0px 30px 20px; width:460px; float:left;}
+.functionCon li span{ color:#3399cc; font-family:Verdana, Geneva, sans-serif; font-size:25px;}
+.functionCon li b{ color:#000; font-size:15px;}
+/*.functionCon li.m01{ background:url(../image/01.jpg) no-repeat left center;}*/
+/*.functionCon li.m02{ background:url(../image/04.jpg) no-repeat left center;}*/
+.functionCon li.m03{ background:url(../image/02.jpg) no-repeat left center; padding-right:0;}
+.functionCon li.m04{ background:url(../image/03.jpg) no-repeat left center;}
+.functionCon li.m05{ background:url(../image/05.jpg) no-repeat left center;}
+.functionCon li.m06{ background:url(../image/06.jpg) no-repeat left center; padding-right:0;}
+
+.friendLink {border-top:2px solid #e0e0e0; padding-top:50px;}
+
+/*footer*/
+.footer{ height:202px; background:url(img/footerBg.png) no-repeat right bottom ;}
+.bdTop{ margin-top:50px; border-top:2px solid #e0e0e0; padding-top:50px; font-family:arial;}
